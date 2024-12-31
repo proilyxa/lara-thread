@@ -16,7 +16,7 @@ https://wiki.swoole.com/en/#/thread/thread
 ## Installation
 You can install the package via composer:
 ```bash
-composer require ilya/lara-thread
+composer require proilyxa/lara-thread
 ```
 
 ```bash
