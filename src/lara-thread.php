@@ -6,9 +6,6 @@ use Illuminate\Contracts\Console\Kernel;
 use Illuminate\Foundation\Application;
 use Proilyxa\LaraThread\LaraThread;
 use Swoole\Thread;
-use Swoole\Thread\ArrayList;
-use Swoole\Thread\Map;
-use Swoole\Thread\Queue;
 
 $args = Thread::getArguments();
 if (empty($args)) {
@@ -16,7 +13,7 @@ if (empty($args)) {
     exit(1);
 }
 
-//$_SERVER['argv'] = $args;
+$_SERVER['argv'] = [];
 
 define('LARAVEL_START', microtime(true));
 
@@ -32,4 +29,4 @@ $runnable = $args[0];
 $params = LaraThread::castMethodParam($runnable, array_splice($args, 1));
 (new $runnable)->{LaraThread::getMethod()}(...$params);
 
-$kernel->terminate($args, 0);
+$kernel->terminate(new Symfony\Component\Console\Input\ArgvInput([]), 0);
