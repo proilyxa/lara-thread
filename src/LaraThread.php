@@ -13,7 +13,7 @@ use Swoole\Thread\Queue;
 
 class LaraThread
 {
-    public static string $method = 'run';
+    private static string $method = 'run';
 
     private static array $typesForExclude = [
         ArrayList::class => 1,
@@ -23,7 +23,6 @@ class LaraThread
 
     private function __construct()
     {
-
     }
 
     public static function run(string $class, mixed ...$params): Thread
@@ -50,6 +49,11 @@ class LaraThread
         }
 
         return $params;
+    }
+
+    public static function getMethod(): string
+    {
+        return self::$method;
     }
 
     public static function recursiveUnserialize(mixed $param): mixed

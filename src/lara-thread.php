@@ -30,6 +30,6 @@ $kernel->bootstrap();
 
 $runnable = $args[0];
 $params = LaraThread::castMethodParam($runnable, array_splice($args, 1));
-(new $runnable)->{LaraThread::$method}(...$params);
+(new $runnable)->{LaraThread::getMethod()}(...$params);
 
 $kernel->terminate($args, 0);
