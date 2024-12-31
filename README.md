@@ -19,9 +19,11 @@ composer require ilya/lara-thread
 php artisan vendor:publish --tag=proilyxa-lara-thread
 ```
 
-You need to install php8.1+ ZTS (Thread safe).
+Laravel 10-11
 
-You also need to have the swoole 6.0+ extension installed, which was compiled with the --enable-swoole-thread parameter
+Need to install php8.1+ ZTS (Thread safe).
+
+Need to have the swoole 6.0+ extension installed, which was compiled with the --enable-swoole-thread parameter
 
 https://wiki.swoole.com/en/#/thread/thread
 
