@@ -84,7 +84,6 @@ declare(strict_types=1);
 namespace App\Console\Commands;
 
 use Illuminate\Support\Facades\Http;
-use Proilyxa\LaravelThread\Runnable;
 use Swoole\Thread\ArrayList;
 use Swoole\Thread\Map;
 use Swoole\Thread\Queue;
