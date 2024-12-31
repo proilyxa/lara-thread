@@ -5,15 +5,16 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/prolyxa/lara-thread/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ilya/lara-thread/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/proilyxa/lara-thread.svg?style=flat-square)](https://packagist.org/packages/proilyxa/lara-thread)
 
-This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
-## Installation
-You can install the package via composer:
+## Description
+You can use this functionality in your Laravel Octane application if you are using the Swoole driver or in console commands.
 
-Require: Laravel 10-11, php8.1+ ZTS (Thread safe), swoole 6.0+ extensionwhich was compiled with the --enable-swoole-thread parameter
+Require: Laravel 10-11, php8.1+ ZTS (Thread safe), swoole 6.0+ extension which was compiled with the --enable-swoole-thread parameter
 
 https://wiki.swoole.com/en/#/thread/thread
 
+## Installation
+You can install the package via composer:
 ```bash
 composer require ilya/lara-thread
 ```
