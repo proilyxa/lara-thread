@@ -8,8 +8,11 @@
 This is where your description should go. Limit it to a paragraph or two. Consider adding a small example.
 
 ## Installation
-
 You can install the package via composer:
+
+Require: Laravel 10-11, php8.1+ ZTS (Thread safe), swoole 6.0+ extensionwhich was compiled with the --enable-swoole-thread parameter
+
+https://wiki.swoole.com/en/#/thread/thread
 
 ```bash
 composer require ilya/lara-thread
@@ -18,14 +21,6 @@ composer require ilya/lara-thread
 ```bash
 php artisan vendor:publish --tag=proilyxa-lara-thread
 ```
-
-Laravel 10-11
-
-Need to install php8.1+ ZTS (Thread safe).
-
-Need to have the swoole 6.0+ extension installed, which was compiled with the --enable-swoole-thread parameter
-
-https://wiki.swoole.com/en/#/thread/thread
 
 ## Usage
 
