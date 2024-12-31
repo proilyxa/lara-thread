@@ -6,6 +6,7 @@
 [![Total Downloads](https://img.shields.io/packagist/dt/proilyxa/lara-thread.svg?style=flat-square)](https://packagist.org/packages/proilyxa/lara-thread)
 
 ## Description
+Since Swoole 6 it supports multithreading, so it's a great way to speed up Laravel applications!
 
 You can use this functionality in your Laravel Octane application if you are using the Swoole driver or in console
 commands.
