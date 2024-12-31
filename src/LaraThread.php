@@ -46,24 +46,24 @@ class LaraThread
 
         $params = [];
         foreach ($args as $key => $value) {
-            $params[$key] = isset($indexes[$key]) ? $value : self::recursiveSerialize($value);
+            $params[$key] = isset($indexes[$key]) ? $value : self::recursiveUnserialize($value);
         }
 
         return $params;
     }
 
-    public static function recursiveSerialize(mixed $param): mixed
+    public static function recursiveUnserialize(mixed $param): mixed
     {
         if (is_array($param)) {
             $params = [];
             foreach ($param as $key => $value) {
-                $params[$key] = self::recursiveSerialize($value);
+                $params[$key] = self::recursiveUnserialize($value);
             }
             return $params;
         }
 
         if ($param instanceof ArrayList || $param instanceof Map) {
-            return self::recursiveSerialize($param->toArray());
+            return self::recursiveUnserialize($param->toArray());
         }
 
         if (!is_object($param) || $param instanceof Queue) {

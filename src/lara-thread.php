@@ -32,3 +32,4 @@ $runnable = $args[0];
 $params = LaraThread::castMethodParam($runnable, array_splice($args, 1));
 (new $runnable)->{LaraThread::$method}(...$params);
 
+$kernel->terminate($args, 0);
