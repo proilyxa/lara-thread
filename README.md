@@ -1,4 +1,4 @@
-# This is my package lara-thread
+# Lara-thread
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/proilyxa/lara-thread.svg?style=flat-square)](https://packagist.org/packages/proilyxa/lara-thread)
 [![GitHub Tests Action Status](https://img.shields.io/github/actions/workflow/status/proilyxa/lara-thread/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/proilyxa/lara-thread/actions?query=workflow%3Arun-tests+branch%3Amain)
