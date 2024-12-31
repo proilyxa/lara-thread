@@ -27,6 +27,9 @@ https://wiki.swoole.com/en/#/thread/thread
 
 ## Usage
 
+```php
+public static function run(string $class, mixed ...$params): Thread
+ ```
 LaraThread::run takes as its first parameter a class that implements the run() method. The run method can have any input parameters.
 
 ## Main
