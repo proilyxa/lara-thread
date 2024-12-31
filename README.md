@@ -5,16 +5,20 @@
 [![GitHub Code Style Action Status](https://img.shields.io/github/actions/workflow/status/prolyxa/lara-thread/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/ilya/lara-thread/actions?query=workflow%3A"Fix+PHP+code+style+issues"+branch%3Amain)
 [![Total Downloads](https://img.shields.io/packagist/dt/proilyxa/lara-thread.svg?style=flat-square)](https://packagist.org/packages/proilyxa/lara-thread)
 
-
 ## Description
-You can use this functionality in your Laravel Octane application if you are using the Swoole driver or in console commands.
 
-Require: Laravel 10-11, php8.1+ ZTS (Thread safe), swoole 6.0+ extension which was compiled with the --enable-swoole-thread parameter
+You can use this functionality in your Laravel Octane application if you are using the Swoole driver or in console
+commands.
+
+Require: Laravel 10-11, php8.1+ ZTS (Thread safe), swoole 6.0+ extension which was compiled with the
+--enable-swoole-thread parameter
 
 https://wiki.swoole.com/en/#/thread/thread
 
 ## Installation
+
 You can install the package via composer:
+
 ```bash
 composer require proilyxa/lara-thread
 ```
@@ -28,44 +32,49 @@ php artisan vendor:publish --tag=proilyxa-lara-thread
 ```php
 public static function run(string $class, mixed ...$params): Thread
  ```
-LaraThread::run takes as its first parameter a class that implements the run() method. The run method can have any input parameters.
+
+LaraThread::run takes as its first parameter a class that implements the run() method. The run method can have any input
+parameters.
 
 ## Main
 
 ```php
-        $start = microtime(true);
+use Swoole\Thread\Queue;
 
-        $input = new Queue();
-        $output = new Queue();
+$start = microtime(true);
 
-        $d = 20;
-        for ($i = 0; $i < $d; $i++) {
-            $input->push('https://dog.ceo/api/breeds/image/random');
-        }
+$input = new Queue();
+$output = new Queue();
 
-        // create workers
-        $t = 5;
-        $threads = [];
-        for ($threadID = 0; $threadID < $t; $threadID++) {
-            $threads[] = LaraThread::run(Run::class, $threadID + 1, $input, $output);
-        }
+$d = 20;
+for ($i = 0; $i < $d; $i++) {
+    $input->push('https://dog.ceo/api/breeds/image/random');
+}
 
-        $result = [];
-        for ($i = 0; $i < $d; $i++) {
-            $result[] = $output->pop(-1);
-        }
+// create workers
+$t = 5;
+$threads = [];
+for ($threadID = 0; $threadID < $t; $threadID++) {
+    $threads[] = LaraThread::run(Run::class, $threadID + 1, $input, $output);
+}
 
-        dump(LaraThread::recursiveUnserialize($result));
+$result = [];
+for ($i = 0; $i < $d; $i++) {
+    $result[] = $output->pop(-1);
+}
 
-        // waiting for threads to finish
-        for ($i = 0; $i < count($threads); $i++) {
-            $threads[$i]->join();
-        }
+dump(LaraThread::recursiveUnserialize($result));
 
-        echo 'timeline: ' . round(microtime(true) - $start, 4) . ' s.';
+// waiting for threads to finish
+for ($i = 0; $i < count($threads); $i++) {
+    $threads[$i]->join();
+}
+
+echo 'timeline: ' . round(microtime(true) - $start, 4) . ' s.';
 ```
 
 ## Worker
+
 ```php
 <?php
 
